@@ -43,7 +43,7 @@ try:
 	film_director = 'John Carpenter',
 	studio_id = '3',
 	genre_id = '3'
-	""")
+	)""")
 	db.commit()
 
 
