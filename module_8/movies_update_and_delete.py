@@ -30,20 +30,21 @@ try:
 	print("\nDatabase user {} connected to MySQL on host {} with database {}" .format(config["user"], config["host"], config["database"]))
 
 	cursor=db.cursor()
+	cursor.execute("""INSERT INTO movies.film
+	VALUES('4',
+	'Halloween',
+	'1978',
+	'91',
+	'John Carpenter',
+	'3',
+	'3'
+	)""")
+	show_films(cursor, "---DISPLAYING FILMS AFTER Insert")
 	show_films(cursor, "--DISPLAYING FILMS--")
 	cursor.execute("""UPDATE movies.film SET genre_id = 1 WHERE film_id = 2;""")
 	show_films(cursor, "---DISPLAYING FILMS AFTER UPDATE - Changed Alien to Horror")
 	cursor.execute("""DELETE from movies.film WHERE film_id = 1;""")
 	show_films(cursor, "---DISPLAYING FILMS AFTER DELETE")
-	cursor.execute("""INSERT INTO movies.film
-	VALUES(film_id = '1',
-	film_name = 'Halloween',
-	film_releaseDate = '1978',
-	film_runtime = '91',
-	film_director = 'John Carpenter',
-	studio_id = '3',
-	genre_id = '3'
-	)""")
 	db.commit()
 
 
